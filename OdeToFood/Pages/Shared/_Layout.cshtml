@@ -1,11 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - OdeToFood</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" />
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>@ViewData["Title"] - OdeToFood</title>
+  <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+        rel="stylesheet">
+  <link rel="stylesheet" href="~/css/site.css" />
 </head>
 <body>
     <header>
@@ -38,16 +40,31 @@
         </main>
     </div>
 
-    <footer class="border-top footer text-muted">
-        <div class="container">
-            &copy; 2020 - OdeToFood - <a asp-area="" asp-page="/Privacy">Privacy</a>
-        </div>
+    <footer class="border-top text-muted mt-4">
+      <div class="container">
+        <vc:restaurant-count></vc:restaurant-count>
+        @RenderSection("footer", required: false)
+        <p>&copy; 2020 - OdeToFood - <a asp-area="" asp-page="/Privacy">Privacy</a></p>
+        <img src="~/OdeToFood.png" alt="Ode To Food Logo" />
+      </div>
     </footer>
 
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-
+    <environment include="Development">
+      <script src="~/lib/jquery/dist/jquery.js"></script>
+      <script src="~/lib/bootstrap/dist/js/bootstrap.js"></script>
+      <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
+    <environment exclude="Development">
+      <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.5.0.min.js"
+              asp-fallback-src="~/lib/jquery/dist/jquery.min.js"
+              asp-fallback-test="window.JQuery"
+              crossorigin="anonymous"></script>
+      <script src="https://ajax.aspnetcdn.com/ajax/bootstrap/4.4.1/bootstrap.min.js"
+              asp-fallback-src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"
+              asp-fallback-test="window.JQuery && window.jQuery.fn && window.jQuery.fn.modal"
+              crossorigin="anonymous"></script>
+      <script src="~/js/site.js" asp-append-version="true"></script>
+    </environment>
     @RenderSection("Scripts", required: false)
 </body>
 </html>

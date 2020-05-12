@@ -1,7 +1,7 @@
 ﻿@page "{restaurantId:int?}"
 @model OdeToFood.EditModel
 @{
-    ViewData["Title"] = "Edit";
+  ViewData["Title"] = "Edit";
 }
 
 <h1>Editing: @Model.Restaurant.Name</h1>
@@ -25,5 +25,8 @@
     <span class="text-danger" asp-validation-for="Restaurant.Cuisine"></span>
   </div>
   <button type="submit" class="btn btn-primary">Save</button>
+  <a asp-page="List" class="btn btn-default">Cancel</a>
 </form>
-
+@section Scripts {
+  <partial name="_ValidationScriptsPartial" />
+}
